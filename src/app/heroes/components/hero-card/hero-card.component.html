@@ -1,0 +1,39 @@
+<mat-card class="hero-card">
+  <mat-card-header>
+    <div mat-card-avatar class="hero-card-header-image">
+        <img
+            mat-card-avatar
+            [src]="hero!.images!.sm"
+            alt=""
+        />
+    </div>
+    <mat-card-title>{{hero.name}}</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="hero!.images!.sm"
+    alt=""
+    class="hero-card-body-image"
+  />
+  <mat-card-content>
+    <div class="hero-card-powerstats-wrapper">
+        <ng-container *ngFor="let powerstat of hero.powerstats | keyvalue">
+            <div class="hero-card-powerstat-wrapper">
+                <h3 class="hero-card-attribute-title">{{powerstat.key | uppercase}}: </h3>
+                <h3>&nbsp;{{powerstat.value}}</h3>
+            </div>
+        </ng-container>
+    </div>
+    <h3 class="hero-card-attribute-title">Group Affiliation:</h3>
+    <p class="hero-card-groupAffiliation">{{hero.connections?.groupAffiliation}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-mini-fab color="primary" (click)="editHero()">
+        <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-mini-fab color="warn" (click)="showDeleteWarnPopUp()">
+        <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
