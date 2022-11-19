@@ -1,0 +1,14 @@
+<!-- <button (click)="nextPage()" [disabled]="!heroes.length">Siguiente</button> -->
+<main>
+    <div class="buttons-wrapper">
+        <button mat-flat-button color="primary">
+            <mat-icon color="white">add</mat-icon> 
+            <span>Create</span>
+          </button>
+    </div>
+    <div class="hero-card-wrapper">
+        <ng-container *ngFor="let hero of heroes;">
+            <app-hero-card [hero]="hero"></app-hero-card>
+        </ng-container>
+    </div>
+</main>
