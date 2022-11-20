@@ -8,6 +8,7 @@ export class Hero {
     work:        Work | undefined;
     connections: Connections | undefined;
     images:      Images | undefined;
+    totalHeroesCount: number | undefined;
 }
 
 class Appearance {

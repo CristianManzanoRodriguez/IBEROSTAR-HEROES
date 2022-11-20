@@ -1,1 +1,7 @@
-<p>heroes-pagination works!</p>
+<div class="hero-pagination-wrapper">
+    <button mat-raised-button color="primary" (click)="prevPage()" [disabled]="page == 1">Prev</button>
+    <div style="display: flex;">
+        <p >Page: {{page}} of {{totalPages}}</p>
+    </div>
+    <button mat-raised-button color="accent" (click)="nextPage()" [disabled]="page == totalPages">Next</button>
+</div>
