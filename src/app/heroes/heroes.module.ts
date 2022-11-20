@@ -8,6 +8,7 @@ import { HeroesListComponent } from './pages/heroes-list/heroes-list.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import {  HeroesSearchComponent } from './components/heroes-search_/heroes-search.component';
 import { HeroesPaginationComponent } from './components/heroes-pagination/heroes-pagination.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { HeroesPaginationComponent } from './components/heroes-pagination/heroes
   imports: [
     CommonModule,
     HeroesRoutingModule, 
-    AngularMaterialModule
+    AngularMaterialModule,FormsModule, ReactiveFormsModule
   ]
 })
 export class HeroesModule { }

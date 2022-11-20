@@ -13,6 +13,7 @@ export class HeroesService {
   constructor(private http: HttpClient) { }
 
   getHeroes(page: number, limit: number, query: string = ''): Observable<Hero[]>{
+        
     const url = `/api/heroes?_page=${page}&_limit=${limit}&name_like=${query}`
     return this.http.get<Hero[]>(url, {observe: 'response'})
             .pipe(
