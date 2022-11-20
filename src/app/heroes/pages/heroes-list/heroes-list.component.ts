@@ -8,6 +8,7 @@ import { HeroesService } from '../../services/heroes.service';
   templateUrl: './heroes-list.component.html',
   styleUrls: ['./heroes-list.component.css']
 })
+
 export class HeroesListComponent implements OnInit{
 
   public heroes: Hero[] = [];
@@ -36,15 +37,20 @@ export class HeroesListComponent implements OnInit{
       if(queryParams['query']){
         this.query = queryParams['query'];
       }
+      console.log(this.query);
+      
       this.getHeroes();
     })
   }
 
   getHeroes(){
     this.loading = true;
-    this.heroesServices.getHeroes(this.page, this.heroesPerPage).subscribe(heroes => {
-      this.heroes = heroes;
-      this.totalHeroesCount = this.heroes[0].totalHeroesCount 
+    
+    this.heroesServices.getHeroes(this.page, this.heroesPerPage, this.query).subscribe(heroes => {
+      if(heroes.length > 0){
+        this.heroes = heroes;
+        this.totalHeroesCount = this.heroes[0].totalHeroesCount 
+      }
       this.loading = false;
     })
   }

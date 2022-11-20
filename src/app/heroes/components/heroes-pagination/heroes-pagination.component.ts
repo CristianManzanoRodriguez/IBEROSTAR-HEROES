@@ -29,7 +29,7 @@ export class HeroesPaginationComponent implements OnInit{
   setTotalPages(){
 
     if(this.totalHeroesCount){
-      this.totalPages = Math.round(this.totalHeroesCount/this.heroesPerPage)      
+      this.totalPages = Math.max(1, (Math.round(this.totalHeroesCount/this.heroesPerPage)))        
     }
 
   }
@@ -44,8 +44,7 @@ export class HeroesPaginationComponent implements OnInit{
     this.navigateToPage();
   }
 
-    navigateToPage(){
-    console.log("entra");
+  navigateToPage(){
     let queryParams = {page: 1, query: ''};
     queryParams.page = this.page
     queryParams.query = this.query
