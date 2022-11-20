@@ -6,9 +6,14 @@
             <span>Create</span>
           </button>
     </div>
-    <div class="hero-card-wrapper">
-        <ng-container *ngFor="let hero of heroes;">
-            <app-hero-card [hero]="hero"></app-hero-card>
+    <ng-container *ngIf="!loading">
+        <div class="hero-card-wrapper">
+            <ng-container *ngFor="let hero of heroes">
+                <app-hero-card [hero]="hero"></app-hero-card>
+            </ng-container>
+        </div>
+        <ng-container *ngIf="totalHeroesCount">
+            <app-heroes-pagination [page]="page" [heroesPerPage]="heroesPerPage" [totalHeroesCount]="totalHeroesCount"></app-heroes-pagination>
         </ng-container>
-    </div>
+    </ng-container>
 </main>

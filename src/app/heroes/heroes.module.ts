@@ -6,8 +6,8 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 
 import { HeroesListComponent } from './pages/heroes-list/heroes-list.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
+import {  HeroesSearchComponent } from './components/heroes-search_/heroes-search.component';
 import { HeroesPaginationComponent } from './components/heroes-pagination/heroes-pagination.component';
-import { HeroesSearchComponent } from './components/heroes-search/heroes-search.component';
 
 
 @NgModule({
