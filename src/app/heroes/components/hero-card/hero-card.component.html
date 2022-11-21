@@ -1,5 +1,5 @@
 <mat-card class="hero-card">
-  <mat-card-header>
+  <mat-card-header [ngClass]="showDeletePopUp ? 'disabled' : ''">
     <div mat-card-avatar class="hero-card-header-image">
         <img
             mat-card-avatar
@@ -10,13 +10,14 @@
     <mat-card-title>{{hero.name}}</mat-card-title>
     <mat-card-subtitle>{{hero.biography?.alignment}}</mat-card-subtitle>
   </mat-card-header>
-  <img
+  <img 
+    [ngClass]="showDeletePopUp ? 'disabled' : ''"
     mat-card-image
     [src]="hero!.images!.sm"
     alt=""
     class="hero-card-body-image"
   />
-  <mat-card-content>
+  <mat-card-content [ngClass]="showDeletePopUp ? 'disabled' : ''">
     <div class="hero-card-powerstats-wrapper">
         <ng-container *ngFor="let powerstat of hero.powerstats | keyvalue">
             <div class="hero-card-powerstat-wrapper">
@@ -28,12 +29,16 @@
     <h3 class="hero-card-attribute-title">Group Affiliation:</h3>
     <p class="hero-card-groupAffiliation">{{hero.connections?.groupAffiliation}}</p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-mini-fab color="primary" (click)="editHero()">
+  <mat-card-actions [ngClass]="showDeletePopUp ? 'disabled' : ''">
+    <button mat-mini-fab color="primary" (click)="editHero()" [disabled]="showDeletePopUp">
         <mat-icon>edit</mat-icon>
     </button>
-    <button mat-mini-fab color="warn" (click)="showDeleteWarnPopUp()">
+    <button mat-mini-fab color="warn" (click)="showDeleteWarnPopUp()" [disabled]="showDeletePopUp">
         <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>
+  <ng-container  *ngIf="showDeletePopUp">
+    <app-delete-hero-popup [hero]="hero" [heroes]="heroes" (showDeletePopUp)="showDeletePopUp"></app-delete-hero-popup>
+  </ng-container>
 </mat-card>
+

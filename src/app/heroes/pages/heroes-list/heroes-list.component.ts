@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Hero } from '../../models/hero';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -8,10 +9,11 @@ import { HeroesService } from '../../services/heroes.service';
   templateUrl: './heroes-list.component.html',
   styleUrls: ['./heroes-list.component.css']
 })
-
-export class HeroesListComponent implements OnInit{
+export class HeroesListComponent implements OnInit, OnDestroy{
 
   public heroes: Hero[] = [];
+  public heroesSubscription?: Subscription;
+
   public page: number = 1;
   public heroesPerPage: number = 12;
   public totalHeroesCount?: number = 0;
@@ -20,13 +22,21 @@ export class HeroesListComponent implements OnInit{
   public loading: boolean = false;
 
   constructor(
-    private heroesServices: HeroesService,
+    public heroesServices: HeroesService,
     private route: ActivatedRoute,
 
   ){}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getQueryParams()
+
+    this.heroesSubscription = this.heroesServices.heroes.subscribe( heroes => {
+      this.heroes = heroes;
+    })
+  }
+
+  ngOnDestroy() {
+    this.heroesSubscription?.unsubscribe()
   }
 
   getQueryParams(){
@@ -36,9 +46,7 @@ export class HeroesListComponent implements OnInit{
       }
       if(queryParams['query']){
         this.query = queryParams['query'];
-      }
-      console.log(this.query);
-      
+      }      
       this.getHeroes();
     })
   }
@@ -48,8 +56,8 @@ export class HeroesListComponent implements OnInit{
     
     this.heroesServices.getHeroes(this.page, this.heroesPerPage, this.query).subscribe(heroes => {
       if(heroes.length > 0){
-        this.heroes = heroes;
-        this.totalHeroesCount = this.heroes[0].totalHeroesCount 
+        this.heroes = heroes
+        this.totalHeroesCount = heroes[0].totalHeroesCount 
       }
       this.loading = false;
     })

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../models/hero';
 
 @Component({
@@ -8,7 +8,11 @@ import { Hero } from '../../models/hero';
 })
 export class HeroCardComponent {
 
+  
   @Input() public hero!: Hero;
+  @Input() public heroes!: Hero[];
+
+  public showDeletePopUp: boolean = false;
 
   editHero(){
     console.log(this.hero.id);
@@ -16,7 +20,7 @@ export class HeroCardComponent {
   }
 
   showDeleteWarnPopUp(){
-    console.log("SHOW POPUP: ", true);
+    this.showDeletePopUp = true;
     
   }
 }
