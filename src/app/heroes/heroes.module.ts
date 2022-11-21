@@ -9,6 +9,7 @@ import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import {  HeroesSearchComponent } from './components/heroes-search_/heroes-search.component';
 import { HeroesPaginationComponent } from './components/heroes-pagination/heroes-pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeleteHeroPopupComponent } from './components/delete-hero-popup/delete-hero-popup.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeroCardComponent,
     HeroesPaginationComponent,
     HeroesSearchComponent,
+    DeleteHeroPopupComponent,
   ],
   imports: [
     CommonModule,

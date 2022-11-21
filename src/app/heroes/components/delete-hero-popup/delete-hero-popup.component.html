@@ -1,0 +1,10 @@
+<div class="delete-hero-popup-wrapper">
+    <h1>Delete Hero</h1>
+    <div >
+      Would you like to delete {{hero?.name}}?
+    </div>
+    <div  class="delete-hero-buttons-wrapper">
+      <button type="button" mat-button color="primary" (click)="closeDeletePopUp()">No</button>
+      <button type="button" mat-raised-button color="warn" (click)="deleteHero()">Ok</button>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Hero } from '../models/hero';
 
@@ -8,13 +8,13 @@ import { Hero } from '../models/hero';
 })
 export class HeroesService {
 
-  public heroes: Hero[] = [];
+  public heroes = new EventEmitter<Hero[]>()
 
   constructor(private http: HttpClient) { }
 
   getHeroes(page: number, limit: number, query: string = ''): Observable<Hero[]>{
         
-    const url = `/api/heroes?_page=${page}&_limit=${limit}&name_like=${query}`
+    const url = `/api/heroes?_page=${page}&_limit=${limit}&_sort=id&_order=desc&name_like=${query}`
     return this.http.get<Hero[]>(url, {observe: 'response'})
             .pipe(
               map( resp => {
@@ -24,6 +24,10 @@ export class HeroesService {
                 })
               })
             )
+  }
+
+  deleteHero(heroId: number): Observable<any>{
+    return this.http.delete<any>('/api/heroes/'+heroId)
   }
 
 }
