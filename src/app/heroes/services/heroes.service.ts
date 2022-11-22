@@ -30,4 +30,10 @@ export class HeroesService {
     return this.http.delete<any>('/api/heroes/'+heroId)
   }
 
+  updateHero(heroId: number, hero: Hero): Observable<any>{
+    
+    return this.http.patch<any>('/api/heroes/'+heroId, hero)
+  }
+  
+
 }

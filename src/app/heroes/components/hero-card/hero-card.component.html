@@ -30,15 +30,20 @@
     <p class="hero-card-groupAffiliation">{{hero.connections?.groupAffiliation}}</p>
   </mat-card-content>
   <mat-card-actions [ngClass]="showDeletePopUp ? 'disabled' : ''">
-    <button mat-mini-fab color="primary" (click)="editHero()" [disabled]="showDeletePopUp">
+    <button mat-mini-fab color="primary" (click)="showEditForm()" [disabled]="showDeletePopUp">
         <mat-icon>edit</mat-icon>
     </button>
-    <button mat-mini-fab color="warn" (click)="showDeleteWarnPopUp()" [disabled]="showDeletePopUp">
+    <button mat-mini-fab color="warn" (click)="showDeleteWarnPopUp()" [disabled]="showDeletePopUp || showEditPopUp">
         <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>
-  <ng-container  *ngIf="showDeletePopUp">
-    <app-delete-hero-popup [hero]="hero" [heroes]="heroes" (showDeletePopUp)="showDeletePopUp"></app-delete-hero-popup>
+  
+  <ng-container  *ngIf="showDeletePopUp == true">
+    <app-delete-hero-popup [hero]="hero" [heroes]="heroes" (showDeleteWarnPopUpEvent)="showDeleteWarnPopUp()"></app-delete-hero-popup>
+  </ng-container>
+
+  <ng-container *ngIf="showEditPopUp && hero">
+    <app-hero-form [(hero)]="hero" (showForm)="showEditForm()"></app-hero-form>
   </ng-container>
 </mat-card>
 

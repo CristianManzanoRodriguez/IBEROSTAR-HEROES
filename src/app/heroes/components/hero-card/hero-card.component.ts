@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Hero } from '../../models/hero';
 
 @Component({
@@ -14,13 +14,15 @@ export class HeroCardComponent {
 
   public showDeletePopUp: boolean = false;
 
-  editHero(){
-    console.log(this.hero.id);
+  public showEditPopUp: boolean = false;
+
+  showEditForm(){
+    this.showEditPopUp = !this.showEditPopUp
     
   }
 
   showDeleteWarnPopUp(){
-    this.showDeletePopUp = true;
+    this.showDeletePopUp = !this.showDeletePopUp;
     
   }
 }

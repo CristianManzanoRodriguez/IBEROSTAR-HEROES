@@ -8,7 +8,7 @@
     position: relative;
 }
 
-.disabled{
+.disabled:not(.edit-button){
     opacity:0.5;
 }
 
