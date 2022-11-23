@@ -1,50 +1,60 @@
 <form method="POST" [formGroup]="heroForm" (ngSubmit)="setHeroData()">
-    <div class="input-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" floatLabel='never' formControlName="name" required >
-          <mat-error *ngIf="heroForm.get('name')?.hasError('required')">Rellena este campo</mat-error>
-        </mat-form-field>
+    <div class="close-form-wrapper" (click)="closeForm()">
+        <mat-icon class="close-form-icon" aria-hidden="false" aria-label="Close" fontIcon="close"></mat-icon>
     </div>
-      <div class="input-container" formGroupName="biography">
-        <mat-form-field appearance="fill">
-          <mat-label>Alignmentl</mat-label>
-          <input matInput placeholder="Alignment" formControlName="alignment" required>
-          <mat-error *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</mat-error>
-        </mat-form-field>
-      </div>
-      <!-- <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Alignmentl</mat-label>
-            <input matInput placeholder="Alignment" formControlName="alignment" required>
-            <mat-error *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Alignmentl</mat-label>
-            <input matInput placeholder="Alignment" formControlName="alignment" required>
-            <mat-error *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Alignmentl</mat-label>
-            <input matInput placeholder="Alignment" formControlName="alignment" required>
-            <mat-error *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Alignmentl</mat-label>
-            <input matInput placeholder="Alignment" formControlName="alignment" required>
-            <mat-error *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Alignmentl</mat-label>
-            <input matInput placeholder="Alignment" formControlName="alignment" required>
-            <mat-error *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Alignmentl</mat-label>
-            <input matInput placeholder="Alignment" formControlName="alignment" required>
-            <mat-error *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</mat-error>
-        </mat-form-field>
-          
-      </div> -->
-      <button mat-button type="submit">Edit Hero</button>
+
+    <label for="intelligence">Name</label>
+    <input type="text" class="hero-name-input-uppercase" placeholder="Name" formControlName="name" required uppercase>
+    <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+    
+    <fieldset class="input-container" formGroupName="biography">
+        <label for="intelligence">Alignment</label>
+        <input type="text" placeholder="Alignment" formControlName="alignment" required>
+        <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+    </fieldset>
+    <fieldset class="input-container" formGroupName="images">
+        <label for="intelligence">Image</label>
+        <input type="text" placeholder="Alignment" formControlName="sm" required>
+        <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+    </fieldset>
+    <fieldset formGroupName="powerstats">
+    <div class="powerstats-wrapper">
+        <div>
+            <label for="intelligence">Intelligence</label>
+            <input type="number" placeholder="Alignment" name="intelligence" formControlName="intelligence" required>
+            <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+        </div>
+        <div>
+            <label for="intelligence">Strength</label>
+            <input type="number" placeholder="Alignment" formControlName="strength" required>
+            <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+        </div>
+        <div>
+            <label for="intelligence">Speed</label>
+            <input type="number" placeholder="Alignment" formControlName="speed" required>
+            <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+        </div>
+        <div>
+            <label for="intelligence">Durability</label>
+            <input type="number" placeholder="Alignment" formControlName="durability" required>
+            <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+        </div>
+        <div>
+            <label for="intelligence">Power</label>
+            <input type="number" placeholder="Alignment" formControlName="power" required>
+            <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+        </div>
+        <div>
+            <label for="intelligence">Combat</label>
+            <input type="number" placeholder="Alignment" formControlName="combat" required>
+            <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+        </div>
+    </div>
+    </fieldset>
+    <fieldset formGroupName="connections">
+            <label for="intelligence">Combat</label>
+            <textarea name="" id="" cols="30" rows="3"></textarea>
+            <small *ngIf="heroForm.get('alignment')?.errors">{{heroForm.get('alignment')?.errors}}</small>
+    </fieldset>
+    <button mat-raised-button color="accent" type="submit" class="edit-hero-button">Edit Hero</button>
 </form>

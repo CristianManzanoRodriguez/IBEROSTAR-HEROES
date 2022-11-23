@@ -11,15 +11,19 @@ import { HeroesService } from '../../services/heroes.service';
 export class HeroFormComponent implements OnInit{
 
   @Input() public hero: Hero = new Hero;
+  
   @Output() public heroChange = new EventEmitter<Hero>();
-
   @Output() public showForm = new EventEmitter<boolean>();
+
   public heroId: number = 0;
 
   public heroForm = this.formBuilder.nonNullable.group({
     name: ['', Validators.required],
     biography: this.formBuilder.nonNullable.group({
       alignment: ['', Validators.required],
+    }),
+    images: this.formBuilder.nonNullable.group({
+      sm: ['']
     }),
     powerstats: this.formBuilder.nonNullable.group({
       intelligence: ['', [Validators.required, Validators.maxLength(3)]],
@@ -51,6 +55,9 @@ export class HeroFormComponent implements OnInit{
       name: this.hero?.name,
       biography: {
         alignment: this.hero?.biography?.alignment,
+      },
+      images: {
+        sm: this.hero?.images?.sm
       },
       powerstats: {
         intelligence: this.hero?.powerstats?.intelligence?.toString(),
@@ -86,7 +93,6 @@ export class HeroFormComponent implements OnInit{
 
     heroBiography.alignment = this.heroForm.controls.biography.controls.alignment.value
 
-
     heroData.powerstats = heroPowerStats    
     heroData.connections = heroConnections
     heroData.biography = heroBiography;
@@ -98,7 +104,11 @@ export class HeroFormComponent implements OnInit{
   updateHero(heroData: Hero){
     this.heroesServices.updateHero(this.heroId, heroData).subscribe(hero => {
       this.heroChange.emit(hero)
-      this.showForm.next(false)
+      this.closeForm()
     })
+  }
+
+  closeForm(){
+    this.showForm.next(false)
   }
 }

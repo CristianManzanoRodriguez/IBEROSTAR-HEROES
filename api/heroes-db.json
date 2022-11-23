@@ -28811,7 +28811,7 @@
     },
     {
       "id": 714,
-      "name": "Winter",
+      "name": "Winter-man",
       "slug": "714-winter-soldier",
       "powerstats": {
         "combat": 84,
@@ -28857,12 +28857,12 @@
       "name": "Wolfsbane",
       "slug": "716-wolfsbane",
       "powerstats": {
-        "intelligence": 38,
-        "strength": 16,
-        "speed": 35,
+        "combat": 42,
         "durability": 42,
+        "intelligence": 38,
         "power": 26,
-        "combat": 42
+        "speed": 35,
+        "strength": 42
       },
       "appearance": {
         "gender": "Female",
@@ -28879,15 +28879,6 @@
         "hairColor": "Auburn"
       },
       "biography": {
-        "fullName": "Rahne Sinclair",
-        "alterEgos": "No alter egos found.",
-        "aliases": [
-          "Grimfang",
-          "Mutate #490"
-        ],
-        "placeOfBirth": "Somewhere in Ross and Cromarty, Scotland",
-        "firstAppearance": "Marvel Graphic Novel #4: New Mutants",
-        "publisher": "Marvel Comics",
         "alignment": "good"
       },
       "work": {
@@ -28895,8 +28886,7 @@
         "base": "(current) X-Factor Investigations, New York City (former)Professor Xavier's School of Gifted Youngsters, Salem Center, Westchester County, New York; Muir Island, Scotland; X-Factor headquarters, Embassy Row, Washington, D.C.; X-Factor Headquarters, New Yo"
       },
       "connections": {
-        "groupAffiliation": "(current) X-Factor Investigations, (former) X-Factor, New Mutants, Hellions, Excalibur",
-        "relatives": "Reverand Craig (father), Moira MacTaggert (surrogate mother, deceased)"
+        "groupAffiliation": "(current) X-Factor Investigations, (former) X-Factor, New Mutants, Hellions, Excalibur"
       },
       "images": {
         "xs": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/716-wolfsbane.jpg",

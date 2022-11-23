@@ -22,9 +22,7 @@ export class DeleteHeroPopupComponent {
     private route: ActivatedRoute,
   ){}
 
-  closeDeletePopUp(){    
-    console.log("entra");
-    
+  closeDeletePopUp(){        
     this.showDeleteWarnPopUpEvent.next(false)
   }
 

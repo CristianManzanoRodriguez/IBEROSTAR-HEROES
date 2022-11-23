@@ -7,7 +7,7 @@
             alt=""
         />
     </div>
-    <mat-card-title>{{hero.name}}</mat-card-title>
+    <mat-card-title>{{hero.name | uppercase}}</mat-card-title>
     <mat-card-subtitle>{{hero.biography?.alignment}}</mat-card-subtitle>
   </mat-card-header>
   <img 
@@ -21,7 +21,7 @@
     <div class="hero-card-powerstats-wrapper">
         <ng-container *ngFor="let powerstat of hero.powerstats | keyvalue">
             <div class="hero-card-powerstat-wrapper">
-                <h3 class="hero-card-attribute-title">{{powerstat.key | uppercase}}: </h3>
+                <h3 class="hero-card-attribute-title">{{powerstat.key}}: </h3>
                 <h3>&nbsp;{{powerstat.value}}</h3>
             </div>
         </ng-container>
