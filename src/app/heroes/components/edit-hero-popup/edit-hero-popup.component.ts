@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Hero } from '../../models/hero';
 import { HeroFormBuilderService } from '../../services/hero-form-builder.service';
 import { HeroesService } from '../../services/heroes.service';
@@ -8,7 +8,7 @@ import { HeroesService } from '../../services/heroes.service';
   templateUrl: './edit-hero-popup.component.html',
   styleUrls: ['./edit-hero-popup.component.css']
 })
-export class EditHeroPopupComponent implements OnInit{
+export class EditHeroPopupComponent implements OnInit, OnDestroy{
 
   @Input() public hero: Hero = new Hero;
   
@@ -16,7 +16,6 @@ export class EditHeroPopupComponent implements OnInit{
   @Output() public showForm = new EventEmitter<boolean>();
 
   public heroId: number = 0;
-
   public heroForm = this.heroFormBuilder.heroForm
 
   constructor(
@@ -32,6 +31,10 @@ export class EditHeroPopupComponent implements OnInit{
 
   }
 
+  ngOnDestroy(){
+    this.heroForm.reset();
+  }
+
   setHeroData(){
     let heroData = this.heroFormBuilder.setHeroData()
     this.updateHero(heroData)
@@ -44,16 +47,15 @@ export class EditHeroPopupComponent implements OnInit{
         this.heroChange.emit(hero)
         this.closeForm()
       })
-    } else {
-      console.log(this.heroForm.controls.powerstats.controls.combat.errors);
-      
+    } else {      
       this.heroForm.markAllAsTouched()
-
+      
     }
   }
-
+  
   closeForm(){
-    this.showForm.next(false)
+    this.heroFormBuilder.editHeroShowed.emit(undefined)
 
   }
+
 }

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Hero } from '../../models/hero';
 import { HeroFormBuilderService } from '../../services/hero-form-builder.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { HeroFormBuilderService } from '../../services/hero-form-builder.service
 export class HeroFormTemplateComponent{
 
   @Input() public heroForm = this.heroFormBuilder.heroForm;
-
+  @Input() public hero?: Hero;
   constructor(private heroFormBuilder: HeroFormBuilderService){}
 
 }

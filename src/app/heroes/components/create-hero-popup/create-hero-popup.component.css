@@ -1,0 +1,26 @@
+form{
+    width: 95%;
+    background-color: #3f51b5;
+    padding: 15px;
+    margin-top: 5rem;
+    margin-inline: auto;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.close-form-wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-form-icon{
+    color: white;
+    cursor: pointer;
+}
+
+.close-form-icon:hover{
+    opacity: .6;
+}

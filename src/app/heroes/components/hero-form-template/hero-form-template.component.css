@@ -1,4 +1,4 @@
-input[type="text"], input[type="number"]{
+input[type="text"], input[type="number"], select{
     width: 100%;
     box-sizing: border-box;
     height: 36px;
@@ -37,12 +37,18 @@ label{
     margin-top: .5rem;
 }
 
+.affiliation-fieldset{
+    display: flex;
+    flex-direction: column;
+}
+
 textarea{
     resize: none;
 }
 
 .edit-hero-button{
-    margin-top: .3rem;
+    margin-top: 1rem;
+    width: 100%;
 }
 
 small{

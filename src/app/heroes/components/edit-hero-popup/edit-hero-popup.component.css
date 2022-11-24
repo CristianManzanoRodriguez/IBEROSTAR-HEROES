@@ -26,3 +26,8 @@ form{
 .close-form-icon:hover{
     opacity: .6;
 }
+
+.edit-hero-button{
+    margin-top: 1rem;
+    width: 100%;
+}

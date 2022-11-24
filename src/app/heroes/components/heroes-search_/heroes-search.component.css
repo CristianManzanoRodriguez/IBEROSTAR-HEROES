@@ -4,5 +4,11 @@
 }
 
 .search-form-field{
-    width: 85%;
+    width: 100%;
+}
+
+@media(min-width: 480px){
+    .search-form-field{
+        width: 85%;
+    }
 }
