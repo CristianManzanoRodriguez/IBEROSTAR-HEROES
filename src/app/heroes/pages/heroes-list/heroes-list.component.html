@@ -6,8 +6,8 @@
                 <app-hero-card [hero]="hero" [heroes]="heroes"></app-hero-card>
             </ng-container>
         </div>
-        <ng-container *ngIf="totalHeroesCount">
-            <app-heroes-pagination [page]="page" [heroesPerPage]="heroesPerPage" [totalHeroesCount]="totalHeroesCount"></app-heroes-pagination>
+        <ng-container *ngIf="heroes">
+            <app-heroes-pagination [page]="page" [heroesPerPage]="heroesPerPage"></app-heroes-pagination>
         </ng-container>
     </ng-container>
 </main>

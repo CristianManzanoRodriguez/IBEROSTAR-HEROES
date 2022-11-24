@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-heroes-pagination',
@@ -10,14 +12,20 @@ export class HeroesPaginationComponent implements OnInit {
   
   @Input() public page: number = 1;
   @Input() public heroesPerPage: number = 12;
-  @Input() public totalHeroesCount?: number = 0;
   @Input() public query: string = '';
-
+  
+  public totalHeroesCount?: number = 0;
+  public totalHeroesCountSubscription?: Subscription;
   public totalPages: number = 0;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private heroesServices: HeroesService
+  ) {}
 
   ngOnInit(): void {
+    this.totalHeroesCount = this.heroesServices.totalHeroesCount
+
     this.setTotalPages();
   }
 

@@ -1,6 +1,4 @@
-export class Hero {
-    totalHeroesCount: number | undefined;
-    
+export class Hero {    
     id:          number | undefined;
     name:        string | undefined;
     slug:        string | undefined;

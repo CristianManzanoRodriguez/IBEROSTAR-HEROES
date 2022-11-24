@@ -9,6 +9,8 @@ import { Hero } from '../models/hero';
 export class HeroesService {
 
   public heroes = new EventEmitter<Hero[]>()
+  
+  public totalHeroesCount: number = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -18,10 +20,8 @@ export class HeroesService {
     return this.http.get<Hero[]>(url, {observe: 'response'})
             .pipe(
               map( resp => {
-                return resp.body!.map( hero => {
-                  hero.totalHeroesCount = Number(resp.headers.get('x-total-count'))
-                  return hero
-                })
+                this.setTotalNumberHeroesCount(Number(resp.headers.get('x-total-count')))
+                return resp.body!
               })
             )
   }
@@ -31,8 +31,12 @@ export class HeroesService {
   }
 
   updateHero(heroId: number, hero: Hero): Observable<any>{
-    
+
     return this.http.patch<any>('/api/heroes/'+heroId, hero)
+  }
+
+  setTotalNumberHeroesCount(totalHeroesCount: number){
+    this.totalHeroesCount = totalHeroesCount
   }
   
 
