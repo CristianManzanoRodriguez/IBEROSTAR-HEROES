@@ -1,7 +1,7 @@
 <form [formGroup]="searchForm" class="search-form">
     <mat-form-field class="search-form-field" >
         <mat-label>Search by name</mat-label>
-        <input matInput type="text" formControlName="query" (keyup)="filterHeroes()">
+        <input matInput type="text" formControlName="query">
         <button  matSuffix mat-icon-button aria-label="Clear" (click)="clearFilterHeroes()">
           <mat-icon>close</mat-icon>
         </button>

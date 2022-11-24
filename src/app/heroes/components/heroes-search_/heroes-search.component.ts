@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { debounceTime, switchMap } from 'rxjs';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-heroes-search',
@@ -12,45 +14,43 @@ export class HeroesSearchComponent implements OnInit{
   @Input() public query: string = '';
   public page: number = 1;
 
-  @Output() public queryChange = new EventEmitter<string>();
-
   public searchForm = this.formBuilder.nonNullable.group({
     query: ['']
   })
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private heroService: HeroesService,
   ){}
 
   ngOnInit(): void {
     this.searchForm.patchValue({
       query: this.query
     })
+
+    this.searchForm.valueChanges.pipe(
+      debounceTime(400),
+      switchMap(query => 
+        this.heroService.getHeroes(1, query.query)
+      )
+    ).subscribe(heroes => {
+      this.setUrl()
+      this.heroService.heroes.emit(heroes)
+    })
   }
+
+  setUrl(){    
+    if (window?.history?.pushState) {
+      var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=1&' + 'query='+this.searchForm.get('query')?.value;
+      window.history.pushState({path:newurl},'',newurl);
+    }
+  }
+  
   
   clearFilterHeroes(){
     this.searchForm.patchValue({
       query: ''
-    })    
-    this.filterHeroes()
-  }
-
-  filterHeroes(){
-
-    this.query = this.searchForm.controls['query'].value;
-    this.queryChange.emit('')
-    
-    this.navigateToPage()
-    
-  }
-
-  navigateToPage(){
-    let queryParams = {page: 1, query: ''};
-    queryParams.page = this.page
-    queryParams.query = this.query
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/heroes/list'], {queryParams: queryParams});
+    })
   }
 
 }
