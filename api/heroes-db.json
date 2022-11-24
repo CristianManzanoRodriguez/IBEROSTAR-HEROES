@@ -17527,12 +17527,12 @@
       "name": "Matt Parkman",
       "slug": "437-matt-parkman",
       "powerstats": {
-        "intelligence": 63,
-        "strength": 10,
-        "speed": 12,
+        "combat": 56,
         "durability": 14,
+        "intelligence": 63,
         "power": 59,
-        "combat": 56
+        "speed": 12,
+        "strength": 56
       },
       "appearance": {
         "gender": "Male",
@@ -17549,14 +17549,6 @@
         "hairColor": "-"
       },
       "biography": {
-        "fullName": "Matthew Parkman",
-        "alterEgos": "No alter egos found.",
-        "aliases": [
-          "-"
-        ],
-        "placeOfBirth": "-",
-        "firstAppearance": "Heroes S01E02 - Don't Look Back",
-        "publisher": "NBC - Heroes",
         "alignment": "good"
       },
       "work": {
@@ -17564,8 +17556,7 @@
         "base": "New York, NY; formerly Los Angeles, CA"
       },
       "connections": {
-        "groupAffiliation": "-",
-        "relatives": "Maury Parkman (father), Janice Parkman (ex-wife)"
+        "groupAffiliation": "-"
       },
       "images": {
         "xs": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/437-matt-parkman.jpg",
@@ -28811,15 +28802,15 @@
     },
     {
       "id": 714,
-      "name": "Winter Soldier",
+      "name": "Winter-man",
       "slug": "714-winter-soldier",
       "powerstats": {
-        "intelligence": 56,
-        "strength": 32,
-        "speed": 35,
-        "durability": 65,
-        "power": 60,
-        "combat": 84
+        "combat": 65,
+        "durability": 30,
+        "intelligence": 50,
+        "power": 20,
+        "speed": 60,
+        "strength": 65
       },
       "appearance": {
         "gender": "Male",
@@ -28836,15 +28827,6 @@
         "hairColor": "Brown"
       },
       "biography": {
-        "fullName": "Bucky Barnes",
-        "alterEgos": "No alter egos found.",
-        "aliases": [
-          "Bucky",
-          "Captain America"
-        ],
-        "placeOfBirth": "-",
-        "firstAppearance": "Captain America Vol 5 #1 (January, 2005) (as Winter Soldier)",
-        "publisher": "Marvel Comics",
         "alignment": "good"
       },
       "work": {
@@ -28852,8 +28834,7 @@
         "base": "-"
       },
       "connections": {
-        "groupAffiliation": "Black Widow (partner), Nick Fury (employer); formerly Avengers, New Avengers, Invaders, Kid Commandos, Liberty Legion, Young Allies, Crazy S.U.E.S., Captain America (partner), Falcon (partner)",
-        "relatives": "George M. Barnes (father, deceased), Winifred C. Barnes (mother, deceased), Rebecca P. Barnes Proctor (sister), Ida (aunt, presumed deceased), Mr. Proctor (brother-in-law), unidentified niece and nephew, Scott Proctor (grandnephew), Kimberly Proctor (grandniece)"
+        "groupAffiliation": "Black Widow (partner), Nick Fury (employer); formerly Avengers, New Avengers, Invaders, Kid Commandos, Liberty Legion, Young Allies, Crazy S.U.E.S., Captain America (partner), Falcon (partner)"
       },
       "images": {
         "xs": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/714-winter-soldier.jpg",
@@ -28867,12 +28848,12 @@
       "name": "Wolfsbane",
       "slug": "716-wolfsbane",
       "powerstats": {
-        "intelligence": 38,
-        "strength": 16,
-        "speed": 35,
+        "combat": 42,
         "durability": 42,
+        "intelligence": 38,
         "power": 26,
-        "combat": 42
+        "speed": 35,
+        "strength": 42
       },
       "appearance": {
         "gender": "Female",
@@ -28889,15 +28870,6 @@
         "hairColor": "Auburn"
       },
       "biography": {
-        "fullName": "Rahne Sinclair",
-        "alterEgos": "No alter egos found.",
-        "aliases": [
-          "Grimfang",
-          "Mutate #490"
-        ],
-        "placeOfBirth": "Somewhere in Ross and Cromarty, Scotland",
-        "firstAppearance": "Marvel Graphic Novel #4: New Mutants",
-        "publisher": "Marvel Comics",
         "alignment": "good"
       },
       "work": {
@@ -28905,8 +28877,7 @@
         "base": "(current) X-Factor Investigations, New York City (former)Professor Xavier's School of Gifted Youngsters, Salem Center, Westchester County, New York; Muir Island, Scotland; X-Factor headquarters, Embassy Row, Washington, D.C.; X-Factor Headquarters, New Yo"
       },
       "connections": {
-        "groupAffiliation": "(current) X-Factor Investigations, (former) X-Factor, New Mutants, Hellions, Excalibur",
-        "relatives": "Reverand Craig (father), Moira MacTaggert (surrogate mother, deceased)"
+        "groupAffiliation": "(current) X-Factor Investigations, (former) X-Factor, New Mutants, Hellions, Excalibur"
       },
       "images": {
         "xs": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/716-wolfsbane.jpg",
@@ -28920,12 +28891,12 @@
       "name": "Wolverine",
       "slug": "717-wolverine",
       "powerstats": {
-        "intelligence": 63,
-        "strength": 32,
-        "speed": 50,
+        "combat": 100,
         "durability": 100,
+        "intelligence": 63,
         "power": 89,
-        "combat": 100
+        "speed": 50,
+        "strength": 100
       },
       "appearance": {
         "gender": "Male",
@@ -28942,25 +28913,6 @@
         "hairColor": "Black"
       },
       "biography": {
-        "fullName": "Logan",
-        "alterEgos": "No alter egos found.",
-        "aliases": [
-          "Weapon X",
-          "Weapon Ten",
-          "Death",
-          "Mutate 9601",
-          "Jim Logan",
-          "Emilio Garra",
-          "Weapon Chi",
-          "Experiment X",
-          "Agent Ten",
-          "Peter Richards",
-          "Mai kethLogan",
-          "Mr. Patch"
-        ],
-        "placeOfBirth": "Alberta, Canada",
-        "firstAppearance": "Incredible Hulk Vol. 2 #180",
-        "publisher": "Marvel Comics",
         "alignment": "good"
       },
       "work": {
@@ -28968,8 +28920,7 @@
         "base": "Xavier Institute, Salem Center, Westchester County, New York; Avengers Tower, New York City"
       },
       "connections": {
-        "groupAffiliation": "X-Men, formerly Horsemen of Apocalypse, Fantastic Four, Secret Defenders, Clan Yashida, Department H, Alpha Flight, Department K, Team X, Team_Weapon_X, Devil's Brigade, Canadian Army",
-        "relatives": "John Howlett Sr. (father, deceased), Elizabeth Howlett (mother, deceased), John Howlett Jr. (brother, allegedly deceased), Viper (ex-wife), Amiko (foster daughter), Erista (son), X-23 (clone)"
+        "groupAffiliation": "X-Men, formerly Horsemen of Apocalypse, Fantastic Four, Secret Defenders, Clan Yashida, Department H, Alpha Flight, Department K, Team X, Team_Weapon_X, Devil's Brigade, Canadian Army"
       },
       "images": {
         "xs": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/717-wolverine.jpg",

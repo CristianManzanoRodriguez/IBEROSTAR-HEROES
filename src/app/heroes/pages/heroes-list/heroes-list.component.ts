@@ -16,7 +16,6 @@ export class HeroesListComponent implements OnInit, OnDestroy{
 
   public page: number = 1;
   public heroesPerPage: number = 12;
-  public totalHeroesCount?: number = 0;
   public lastPage?: number = 0;
   public query: string = '';
   public loading: boolean = false;
@@ -57,7 +56,6 @@ export class HeroesListComponent implements OnInit, OnDestroy{
     this.heroesServices.getHeroes(this.page, this.heroesPerPage, this.query).subscribe(heroes => {
       if(heroes.length > 0){
         this.heroes = heroes
-        this.totalHeroesCount = heroes[0].totalHeroesCount 
       }
       this.loading = false;
     })

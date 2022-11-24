@@ -8,10 +8,6 @@
     position: relative;
 }
 
-.disabled{
-    opacity:0.5;
-}
-
 .hero-card .hero-card-body-image{
     height: 250px;
     padding-inline: 10px;
@@ -31,7 +27,6 @@
 }
 
 .hero-card-attribute-title{
-    text-transform: capitalize;
     font-weight: bold;
 }
 

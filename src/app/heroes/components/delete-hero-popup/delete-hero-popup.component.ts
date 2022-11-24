@@ -15,15 +15,15 @@ export class DeleteHeroPopupComponent {
   @Input() public hero?: Hero;
   @Input() public heroes!: Hero[];
 
-  @Output() public showDeletePopUpChange = new EventEmitter<boolean>()
+  @Output() public showDeleteWarnPopUpEvent = new EventEmitter<boolean>()
 
   constructor(
     private herosServices: HeroesService,
     private route: ActivatedRoute,
   ){}
 
-  closeDeletePopUp(){    
-    this.showDeletePopUpChange.emit(false)
+  closeDeletePopUp(){        
+    this.showDeleteWarnPopUpEvent.next(false)
   }
 
   deleteHero(){
@@ -37,7 +37,7 @@ export class DeleteHeroPopupComponent {
   setHeroesList(){
     this.heroes = this.heroes.filter(hero => hero.id != this.hero?.id)
     this.herosServices.heroes.emit(this.heroes)
-    this.showDeletePopUpChange.emit(false)
+    this.showDeleteWarnPopUpEvent.next(false)
   }
 
 }

@@ -1,0 +1,76 @@
+form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 95%;
+    transform: translate(-50%, -50%);
+    background-color: #3f51b5;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.close-form-wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-form-icon{
+    color: white;
+    cursor: pointer;
+}
+
+.close-form-icon:hover{
+    opacity: .6;
+}
+
+input[type="text"], input[type="number"]{
+    width: 100%;
+    box-sizing: border-box;
+    height: 36px;
+    border-radius: 9px;
+    border: none;
+    font-size: 1em;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: .5rem;
+}
+
+.hero-name-input-uppercase{
+    text-transform: uppercase;
+}
+
+fieldset{
+    border: none;
+    padding: 0px;
+    margin-top: .5rem;
+}
+
+.powerstats-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+h4{
+    margin-bottom: 0px;
+}
+
+label{
+    color: #ff4081;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: .5rem;
+}
+
+textarea{
+    resize: none;
+}
+
+.edit-hero-button{
+    margin-top: .3rem;
+}
+

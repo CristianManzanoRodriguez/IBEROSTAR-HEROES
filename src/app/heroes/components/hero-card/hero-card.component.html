@@ -7,7 +7,7 @@
             alt=""
         />
     </div>
-    <mat-card-title>{{hero.name}}</mat-card-title>
+    <mat-card-title>{{hero.name | uppercase}}</mat-card-title>
     <mat-card-subtitle>{{hero.biography?.alignment}}</mat-card-subtitle>
   </mat-card-header>
   <img 
@@ -21,7 +21,7 @@
     <div class="hero-card-powerstats-wrapper">
         <ng-container *ngFor="let powerstat of hero.powerstats | keyvalue">
             <div class="hero-card-powerstat-wrapper">
-                <h3 class="hero-card-attribute-title">{{powerstat.key | uppercase}}: </h3>
+                <h3 class="hero-card-attribute-title">{{powerstat.key}}: </h3>
                 <h3>&nbsp;{{powerstat.value}}</h3>
             </div>
         </ng-container>
@@ -30,15 +30,20 @@
     <p class="hero-card-groupAffiliation">{{hero.connections?.groupAffiliation}}</p>
   </mat-card-content>
   <mat-card-actions [ngClass]="showDeletePopUp ? 'disabled' : ''">
-    <button mat-mini-fab color="primary" (click)="editHero()" [disabled]="showDeletePopUp">
+    <button mat-mini-fab color="primary" (click)="showEditForm()" [disabled]="showDeletePopUp">
         <mat-icon>edit</mat-icon>
     </button>
-    <button mat-mini-fab color="warn" (click)="showDeleteWarnPopUp()" [disabled]="showDeletePopUp">
+    <button mat-mini-fab color="warn" (click)="showDeleteWarnPopUp()" [disabled]="showDeletePopUp || showEditPopUp">
         <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>
-  <ng-container  *ngIf="showDeletePopUp">
-    <app-delete-hero-popup [hero]="hero" [heroes]="heroes" (showDeletePopUp)="showDeletePopUp"></app-delete-hero-popup>
+  
+  <ng-container  *ngIf="showDeletePopUp == true">
+    <app-delete-hero-popup [hero]="hero" [heroes]="heroes" (showDeleteWarnPopUpEvent)="showDeleteWarnPopUp()"></app-delete-hero-popup>
+  </ng-container>
+
+  <ng-container *ngIf="showEditPopUp && hero">
+    <app-hero-form [(hero)]="hero" (showForm)="showEditForm()"></app-hero-form>
   </ng-container>
 </mat-card>
 

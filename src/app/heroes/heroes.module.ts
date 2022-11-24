@@ -10,6 +10,7 @@ import {  HeroesSearchComponent } from './components/heroes-search_/heroes-searc
 import { HeroesPaginationComponent } from './components/heroes-pagination/heroes-pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteHeroPopupComponent } from './components/delete-hero-popup/delete-hero-popup.component';
+import { HeroFormComponent } from './components/hero-form/hero-form.component';
 
 
 @NgModule({
@@ -19,11 +20,14 @@ import { DeleteHeroPopupComponent } from './components/delete-hero-popup/delete-
     HeroesPaginationComponent,
     HeroesSearchComponent,
     DeleteHeroPopupComponent,
+    HeroFormComponent,
   ],
   imports: [
     CommonModule,
     HeroesRoutingModule, 
-    AngularMaterialModule,FormsModule, ReactiveFormsModule
+    AngularMaterialModule,
+    FormsModule, 
+    ReactiveFormsModule,
   ]
 })
 export class HeroesModule { }
