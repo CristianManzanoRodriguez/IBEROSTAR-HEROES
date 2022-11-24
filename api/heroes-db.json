@@ -17253,12 +17253,12 @@
       "name": "Mantis",
       "slug": "431-mantis",
       "powerstats": {
-        "intelligence": 63,
-        "strength": 8,
-        "speed": 33,
+        "combat": 80,
         "durability": 80,
+        "intelligence": 63,
         "power": 100,
-        "combat": 80
+        "speed": 33,
+        "strength": 80
       },
       "appearance": {
         "gender": "Female",
@@ -17275,18 +17275,6 @@
         "hairColor": "Black"
       },
       "biography": {
-        "fullName": "",
-        "alterEgos": "No alter egos found.",
-        "aliases": [
-          "Celestial Madonna",
-          "Willow",
-          "Lorelei",
-          "Mandy Celestine",
-          "This One (in referring to herself)"
-        ],
-        "placeOfBirth": "Vietnam",
-        "firstAppearance": "Avengers #112",
-        "publisher": "Marvel Comics",
         "alignment": "good"
       },
       "work": {
@@ -17294,8 +17282,7 @@
         "base": "Mobile"
       },
       "connections": {
-        "groupAffiliation": "-",
-        "relatives": "Libra (Gustav Brandt) (father), Lau Brandt (mother), Cotati possessing Jacques Duquesne (husband), Quoi (son)"
+        "groupAffiliation": "-"
       },
       "images": {
         "xs": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/431-mantis.jpg",
@@ -28850,7 +28837,7 @@
       "powerstats": {
         "combat": 42,
         "durability": 42,
-        "intelligence": 38,
+        "intelligence": 48,
         "power": 26,
         "speed": 35,
         "strength": 42

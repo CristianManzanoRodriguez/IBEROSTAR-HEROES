@@ -1,0 +1,8 @@
+<form method="POST" (ngSubmit)="setHeroData()">
+    <div class="close-form-wrapper" (click)="closeForm()">
+        <mat-icon class="close-form-icon" aria-hidden="false" aria-label="Close" fontIcon="close"></mat-icon>
+    </div>
+    <app-hero-form-template *ngIf="heroForm" [heroForm]="heroForm">
+        <button mat-raised-button color="accent" type="submit" class="edit-hero-button">Edit Hero</button>
+    </app-hero-form-template>
+</form>

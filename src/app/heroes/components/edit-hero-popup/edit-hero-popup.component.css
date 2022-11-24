@@ -1,0 +1,33 @@
+form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 95%;
+    transform: translate(-50%, -50%);
+    background-color: #3f51b5;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.close-form-wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-form-icon{
+    color: white;
+    cursor: pointer;
+}
+
+.close-form-icon:hover{
+    opacity: .6;
+}
+
+.edit-hero-button{
+    margin-top: 1rem;
+    width: 100%;
+}

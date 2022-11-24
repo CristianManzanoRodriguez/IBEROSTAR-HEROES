@@ -15,10 +15,11 @@ export class HeroesListComponent implements OnInit, OnDestroy{
   public heroesSubscription?: Subscription;
 
   public page: number = 1;
-  public heroesPerPage: number = 12;
   public lastPage?: number = 0;
   public query: string = '';
   public loading: boolean = false;
+
+  public showAddHero: boolean = false;
 
   constructor(
     public heroesServices: HeroesService,
@@ -50,15 +51,19 @@ export class HeroesListComponent implements OnInit, OnDestroy{
     })
   }
 
-  getHeroes(){
+  getHeroes(){    
     this.loading = true;
     
-    this.heroesServices.getHeroes(this.page, this.heroesPerPage, this.query).subscribe(heroes => {
+    this.heroesServices.getHeroes(this.page, this.query).subscribe(heroes => {      
       if(heroes.length > 0){
         this.heroes = heroes
       }
       this.loading = false;
     })
+  }
+
+  showAddHeroEvent(){        
+    this.showAddHero = !this.showAddHero;
   }
 
 }

@@ -1,0 +1,77 @@
+    <ng-container [formGroup]="heroForm">
+        <label for="name">Name</label>
+        <input type="text" id="name{{hero?.id}}" class="hero-name-input-uppercase" placeholder="Name" formControlName="name" required uppercase>
+        <small *ngIf="heroForm.get('name')?.touched && heroForm.controls?.name?.errors?.['required']">This field is empty</small>
+        
+        <fieldset class="input-container" formGroupName="biography">
+            <label for="alignment">Alignment</label>
+            <select name="alignment" id="alignment{{hero?.id}}"  formControlName="alignment" required>
+                <option value="" selected disabled>Select option</option>
+                <option value="-">Empty</option>
+                <option value="bad">Bad</option>
+                <option value="good">Good</option>
+                <option value="neutral">Neutral</option>
+            </select>
+            <!-- <input type="text" id="alignment" placeholder="Alignment"> -->
+            <small *ngIf="heroForm.controls?.biography?.get('alignment')?.touched && heroForm.controls?.biography?.controls?.alignment?.errors?.['required']">This field is empty</small>
+        </fieldset>
+        <fieldset class="input-container" formGroupName="images">
+            <label for="sm">Image</label>
+            <input type="text" id="sm{{hero?.id}}" placeholder="Paste url image" formControlName="sm">
+        </fieldset>
+        <fieldset formGroupName="powerstats">
+        <div class="powerstats-wrapper">
+            <div>
+                <label for="intelligence">Intelligence</label>
+                <input type="number" id="intelligence{{hero?.id}}" min="0" max="100" placeholder="Intelligence" name="intelligence" formControlName="intelligence" required>
+                <small *ngIf="heroForm?.controls?.powerstats?.get('intelligence')?.touched && heroForm?.controls?.powerstats?.get('intelligence')?.errors?.['required']">This field is empty</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.intelligence?.errors?.['max']">Max. puntuation it's 100</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.intelligence?.errors?.['min']">Min. puntuation it's 100</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.intelligence?.errors?.['min']">Min. puntuation it's 100</small>
+    
+            </div>
+            <div>
+                <label for="strength">Strength</label>
+                <input type="number" id="strength{{hero?.id}}" min="0" max="100" placeholder="Strength" formControlName="strength" required>
+                <small *ngIf="heroForm?.controls?.powerstats?.get('strength')?.touched && heroForm?.controls?.powerstats?.get('strength')?.errors?.['required']">This field is empty</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.strength?.errors?.['max']">Max. puntuation it's 100</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.strength?.errors?.['min']">Min. puntuation it's 100</small>
+            </div>
+            <div>
+                <label for="speed">Speed</label>
+                <input type="number" id="speed{{hero?.id}}" min="0" max="100" placeholder="Speed" formControlName="speed" required>
+                <small *ngIf="heroForm?.controls?.powerstats?.get('speed')?.touched && heroForm?.controls?.powerstats?.get('speed')?.errors?.['required']">This field is empty</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.speed?.errors?.['max']">Max. puntuation it's 100</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.speed?.errors?.['min']">Min. puntuation it's 100</small>
+            </div>
+            <div>
+                <label for="durability">Durability</label>
+                <input type="number" id="durability{{hero?.id}}" min="0" max="100" placeholder="Durability" formControlName="durability" required>
+                <small *ngIf="heroForm?.controls?.powerstats?.get('durability')?.touched && heroForm?.controls?.powerstats?.get('durability')?.errors?.['required']">This field is empty</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.durability?.errors?.['max']">Max. puntuation it's 100</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.durability?.errors?.['min']">Min. puntuation it's 100</small>
+            </div>
+            <div>
+                <label for="power">Power</label>
+                <input type="number" id="power{{hero?.id}}" min="0" max="100" placeholder="Power" formControlName="power" required>
+                <small *ngIf="heroForm?.controls?.powerstats?.get('power')?.touched && heroForm?.controls?.powerstats?.get('power')?.errors?.['required']">This field is empty</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.power?.errors?.['max']">Max. puntuation it's 100</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.power?.errors?.['min']">Min. puntuation it's 100</small>
+    
+            </div>
+            <div>
+                <label for="combat">Combat</label>
+                <input type="number" id="combat{{hero?.id}}" min="0" max="100" placeholder="Combat" formControlName="combat" required>
+                <small *ngIf="heroForm?.controls?.powerstats?.get('combat')?.touched && heroForm?.controls?.powerstats?.get('combat')?.errors?.['required']">This field is empty</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.combat?.errors?.['max']">Max. puntuation it's 100</small>
+                <small *ngIf="heroForm?.controls?.powerstats?.controls?.combat?.errors?.['min']">Min. puntuation it's 100</small>
+            </div>
+        </div>
+        </fieldset>
+        <fieldset formGroupName="connections" class="affiliation-fieldset">
+                <label for="groupAffiliation">Group of affiliation</label>
+                <textarea id="groupAffiliation{{hero?.id}}" name="groupAffiliation{{hero?.id}}" cols="30" rows="3" placeholder="Group of affiliation" formControlName="groupAffiliation"></textarea>
+                <small *ngIf="heroForm.controls?.connections?.get('groupAffiliation')?.touched && heroForm.controls?.connections?.controls?.groupAffiliation?.errors?.['required']">This field is empty</small>
+        </fieldset>
+        <ng-content></ng-content>
+    </ng-container>

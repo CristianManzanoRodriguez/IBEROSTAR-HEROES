@@ -14,9 +14,9 @@ export class HeroesService {
 
   constructor(private http: HttpClient) { }
 
-  getHeroes(page: number, limit: number, query: string = ''): Observable<Hero[]>{
+  getHeroes(page: number, query: string = ''): Observable<Hero[]>{
         
-    const url = `/api/heroes?_page=${page}&_limit=${limit}&_sort=id&_order=desc&name_like=${query}`
+    const url = `/api/heroes?_page=${page}&_limit=12&_sort=id&_order=desc&name_like=${query}`
     return this.http.get<Hero[]>(url, {observe: 'response'})
             .pipe(
               map( resp => {
@@ -24,6 +24,11 @@ export class HeroesService {
                 return resp.body!
               })
             )
+  }
+
+  addHeroe(hero: Hero): Observable<Hero>{
+    const url = "/api/heroes"
+    return this.http.post<Hero>(url, hero)
   }
 
   deleteHero(heroId: number): Observable<any>{

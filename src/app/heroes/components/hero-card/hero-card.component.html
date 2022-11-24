@@ -3,7 +3,7 @@
     <div mat-card-avatar class="hero-card-header-image">
         <img
             mat-card-avatar
-            [src]="hero!.images!.sm"
+            [src]="hero.images == undefined ? '/assets/img/unknown-hero.png' : hero!.images!.sm"
             alt=""
         />
     </div>
@@ -13,8 +13,8 @@
   <img 
     [ngClass]="showDeletePopUp ? 'disabled' : ''"
     mat-card-image
-    [src]="hero!.images!.sm"
-    alt=""
+    [src]="hero.images == undefined ? '/assets/img/unknown-hero.png' : hero!.images!.sm"
+    alt="Hero Image"
     class="hero-card-body-image"
   />
   <mat-card-content [ngClass]="showDeletePopUp ? 'disabled' : ''">
@@ -33,7 +33,7 @@
     <button mat-mini-fab color="primary" (click)="showEditForm()" [disabled]="showDeletePopUp">
         <mat-icon>edit</mat-icon>
     </button>
-    <button mat-mini-fab color="warn" (click)="showDeleteWarnPopUp()" [disabled]="showDeletePopUp || showEditPopUp">
+    <button mat-mini-fab color="warn" (click)="showDeleteWarnPopUp()" [disabled]="showDeletePopUp || editPopupShowed == ('editHero'+hero.id)">
         <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>
@@ -42,8 +42,8 @@
     <app-delete-hero-popup [hero]="hero" [heroes]="heroes" (showDeleteWarnPopUpEvent)="showDeleteWarnPopUp()"></app-delete-hero-popup>
   </ng-container>
 
-  <ng-container *ngIf="showEditPopUp && hero">
-    <app-hero-form [(hero)]="hero" (showForm)="showEditForm()"></app-hero-form>
+  <ng-container *ngIf="hero && editPopupShowed == ('editHero'+hero.id)">
+    <app-edit-hero-popup [(hero)]="hero"></app-edit-hero-popup>
   </ng-container>
 </mat-card>
 

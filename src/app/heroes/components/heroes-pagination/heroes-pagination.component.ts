@@ -11,7 +11,6 @@ import { HeroesService } from '../../services/heroes.service';
 export class HeroesPaginationComponent implements OnInit {
   
   @Input() public page: number = 1;
-  @Input() public heroesPerPage: number = 12;
   @Input() public query: string = '';
   
   public totalHeroesCount?: number = 0;
@@ -33,7 +32,7 @@ export class HeroesPaginationComponent implements OnInit {
     if (this.totalHeroesCount) {
       this.totalPages = Math.max(
         1,
-        Math.round(this.totalHeroesCount / this.heroesPerPage)
+        Math.round(this.totalHeroesCount / 12)
       );
     }
   }

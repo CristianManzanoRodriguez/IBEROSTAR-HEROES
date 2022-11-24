@@ -1,13 +1,23 @@
 <main>
-    <app-heroes-search [(query)]="query"></app-heroes-search>
-    <ng-container *ngIf="!loading">
+    <div class="search-add-wrapper">
+        <app-heroes-search [(query)]="query"></app-heroes-search>
+        <div class="add-hero-button-wrapper">
+            <button mat-mini-fab color="accent" (click)="showAddHeroEvent()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+    <ng-container *ngIf="showAddHero && !loading">
+        <app-create-hero-popup (showAddHeroEvent)="showAddHeroEvent()" (getHeroesgetHeroes)="getHeroes()"></app-create-hero-popup>
+    </ng-container>
+    <ng-container *ngIf="!loading && showAddHero==false">
         <div class="hero-card-wrapper">
             <ng-container *ngFor="let hero of heroes">
                 <app-hero-card [hero]="hero" [heroes]="heroes"></app-hero-card>
             </ng-container>
         </div>
         <ng-container *ngIf="heroes">
-            <app-heroes-pagination [page]="page" [heroesPerPage]="heroesPerPage"></app-heroes-pagination>
+            <app-heroes-pagination [page]="page"></app-heroes-pagination>
         </ng-container>
     </ng-container>
 </main>

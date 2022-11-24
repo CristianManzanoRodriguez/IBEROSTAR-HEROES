@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Biography, Connections, Hero, Powerstats } from '../models/hero';
 
@@ -7,7 +7,9 @@ import { Biography, Connections, Hero, Powerstats } from '../models/hero';
 })
 export class HeroFormBuilderService {
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder){};
+
+  public editHeroShowed = new EventEmitter<string>();
 
   public heroForm = this.formBuilder.nonNullable.group({
       name: ['', Validators.required],
@@ -15,7 +17,7 @@ export class HeroFormBuilderService {
         alignment: ['', Validators.required],
       }),
       images: this.formBuilder.nonNullable.group({
-        sm: ['', Validators.required]
+        sm: ['']
       }),
       powerstats: this.formBuilder.nonNullable.group({
         intelligence: [0, [Validators.required, Validators.min(0) ,Validators.max(100), Validators.maxLength(3)]],
