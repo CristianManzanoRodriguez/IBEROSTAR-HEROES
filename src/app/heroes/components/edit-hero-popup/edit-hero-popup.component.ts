@@ -4,11 +4,11 @@ import { HeroFormBuilderService } from '../../services/hero-form-builder.service
 import { HeroesService } from '../../services/heroes.service';
 
 @Component({
-  selector: 'app-hero-form',
-  templateUrl: './hero-form.component.html',
-  styleUrls: ['./hero-form.component.css']
+  selector: 'app-edit-hero-popup',
+  templateUrl: './edit-hero-popup.component.html',
+  styleUrls: ['./edit-hero-popup.component.css']
 })
-export class HeroFormComponent implements OnInit{
+export class EditHeroPopupComponent implements OnInit{
 
   @Input() public hero: Hero = new Hero;
   

@@ -10,7 +10,9 @@ import {  HeroesSearchComponent } from './components/heroes-search_/heroes-searc
 import { HeroesPaginationComponent } from './components/heroes-pagination/heroes-pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteHeroPopupComponent } from './components/delete-hero-popup/delete-hero-popup.component';
-import { HeroFormComponent } from './components/hero-form/hero-form.component';
+import { EditHeroPopupComponent } from './components/edit-hero-popup/edit-hero-popup.component';
+import { CreateHeroPopupComponent } from './components/create-hero-popup/create-hero-popup.component';
+import { HeroFormTemplateComponent } from './components/hero-form-template/hero-form-template.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { HeroFormComponent } from './components/hero-form/hero-form.component';
     HeroesPaginationComponent,
     HeroesSearchComponent,
     DeleteHeroPopupComponent,
-    HeroFormComponent,
+    EditHeroPopupComponent,
+    CreateHeroPopupComponent,
+    HeroFormTemplateComponent,
   ],
   imports: [
     CommonModule,

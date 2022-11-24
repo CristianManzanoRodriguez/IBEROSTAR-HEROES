@@ -43,7 +43,7 @@
   </ng-container>
 
   <ng-container *ngIf="showEditPopUp && hero">
-    <app-hero-form [(hero)]="hero" (showForm)="showEditForm()"></app-hero-form>
+    <app-edit-hero-popup [(hero)]="hero" (showForm)="showEditForm()"></app-edit-hero-popup>
   </ng-container>
 </mat-card>
 
