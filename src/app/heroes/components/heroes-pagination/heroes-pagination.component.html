@@ -1,7 +1,7 @@
 <div class="hero-pagination-wrapper">
     <button mat-raised-button color="primary" (click)="prevPage()" [disabled]="page == 1">Prev</button>
     <div class="pagination-text-wrapper">
-        <p >Page: {{page}} of {{totalPages}}</p>
+        <p >Page: {{page}} of {{pages}}</p>
     </div>
-    <button mat-raised-button color="accent" (click)="nextPage()" [disabled]="page == totalPages || totalPages == 1">Next</button>
+    <button mat-raised-button color="accent" (click)="nextPage()" [disabled]="page == pages || totalPages == 1">Next</button>
 </div>
