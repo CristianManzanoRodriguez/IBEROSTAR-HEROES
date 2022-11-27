@@ -15,31 +15,39 @@ export class HeroesListComponent implements OnInit, OnDestroy{
   public heroesSubscription?: Subscription;
 
   public page: number = 1;
-  public lastPage?: number = 0;
   public query: string = '';
   public loading: boolean = false;
 
   public showAddHero: boolean = false;
 
+  public pages?: number = 0;
+  public pagesSubscription?: Subscription;
+
   constructor(
     public heroesServices: HeroesService,
     private route: ActivatedRoute,
-
   ){}
 
   ngOnInit() {
-    this.getQueryParams()
+    this.setQueryParams()
+    this.setHeroesSubscription()
+    this.setPagesSubscription()
 
+  }
+
+  setPagesSubscription(){
+    this.pagesSubscription = this.heroesServices.pages.subscribe( pages => {
+      this.pages = pages;
+    })
+  }
+  
+  setHeroesSubscription(){
     this.heroesSubscription = this.heroesServices.heroes.subscribe( heroes => {
       this.heroes = heroes;
     })
   }
 
-  ngOnDestroy() {
-    this.heroesSubscription?.unsubscribe()
-  }
-
-  getQueryParams(){
+  setQueryParams(){
     this.route.queryParams.subscribe((queryParams: Params) => {
       if(queryParams['page']){
         this.page = parseInt(queryParams['page']);
@@ -51,19 +59,21 @@ export class HeroesListComponent implements OnInit, OnDestroy{
     })
   }
 
-  getHeroes(){    
-    this.loading = true;
-    
+  getHeroes(){        
     this.heroesServices.getHeroes(this.page, this.query).subscribe(heroes => {      
       if(heroes.length > 0){
         this.heroes = heroes
       }
-      this.loading = false;
     })
   }
 
   showAddHeroEvent(){        
     this.showAddHero = !this.showAddHero;
+  }
+
+  ngOnDestroy() {
+    this.heroesSubscription?.unsubscribe();
+    this.pagesSubscription?.unsubscribe();
   }
 
 }

@@ -9,8 +9,10 @@ import { Hero } from '../models/hero';
 export class HeroesService {
 
   public heroes = new EventEmitter<Hero[]>()
+  public query = new EventEmitter<string>();
+  public page = new EventEmitter<number>();
   
-  public totalHeroesCount: number = 0;
+  public pages = new EventEmitter<number>();
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +22,7 @@ export class HeroesService {
     return this.http.get<Hero[]>(url, {observe: 'response'})
             .pipe(
               map( resp => {
-                this.setTotalNumberHeroesCount(Number(resp.headers.get('x-total-count')))
+                this.setNumberOfPages(Number(resp.headers.get('x-total-count')))
                 return resp.body!
               })
             )
@@ -40,8 +42,8 @@ export class HeroesService {
     return this.http.patch<any>('/api/heroes/'+heroId, hero)
   }
 
-  setTotalNumberHeroesCount(totalHeroesCount: number){
-    this.totalHeroesCount = totalHeroesCount
+  setNumberOfPages(totalHeroesCount: number){
+    this.pages.emit(Math.ceil(totalHeroesCount / 12))
   }
   
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -10,48 +10,72 @@ import { HeroesService } from '../../services/heroes.service';
 })
 export class HeroesPaginationComponent implements OnInit {
   
-  @Input() public page: number = 1;
-  @Input() public query: string = '';
+  @Input() pages?: number = 1;
   
-  public totalHeroesCount?: number = 0;
-  public totalHeroesCountSubscription?: Subscription;
+  public query: string = '';
+  public querySubscription?: Subscription;
+  
+  public page: number = 1;
+  public pageSubscription?: Subscription;
+  
   public totalPages: number = 0;
 
   constructor(
-    private router: Router,
-    private heroesServices: HeroesService
+    private heroesServices: HeroesService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.totalHeroesCount = this.heroesServices.totalHeroesCount
-
-    this.setTotalPages();
+    this.setQuery();
+    this.setPage();
+    this.setQueryParams();
   }
 
-  setTotalPages() {
-    if (this.totalHeroesCount) {
-      this.totalPages = Math.max(
-        1,
-        Math.round(this.totalHeroesCount / 12)
-      );
-    }
+  setQueryParams(){
+    this.route.queryParams.subscribe((queryParams: Params) => {
+      if(queryParams['page']){
+        this.page = parseInt(queryParams['page']);
+      }
+      if(queryParams['query']){
+        this.query = queryParams['query'];
+      }      
+    })
+  }
+
+  setPage(){
+    this.pageSubscription = this.heroesServices.page.subscribe(page => {      
+      this.page = page
+    })
+  }
+
+  setQuery(){
+    this.querySubscription = this.heroesServices.query.subscribe(query => {
+      this.query = query;
+    })
   }
 
   nextPage() {
     this.page = this.page + 1;
-    this.navigateToPage();
+    this.getHeroes()    
   }
 
   prevPage() {
     this.page = this.page - 1;
-    this.navigateToPage();
+    this.getHeroes()
   }
 
-  navigateToPage() {
-    let queryParams = { page: 1, query: '' };
-    queryParams.page = this.page;
-    queryParams.query = this.query;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/heroes/list'], { queryParams: queryParams });
+  getHeroes(){
+    this.heroesServices.getHeroes(this.page, this.query).subscribe(heroes => {
+      this.heroesServices.heroes.emit(heroes)
+      this.setUrl()
+    })
+  }
+
+  setUrl(){    
+    if (window?.history?.pushState) {
+      var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page='+ this.page + '&query='+this.query;
+      window.history.pushState({path:newurl},'',newurl);
+      window.scrollTo(0, 0);
+    }
   }
 }

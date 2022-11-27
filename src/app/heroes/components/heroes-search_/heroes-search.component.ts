@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, switchMap } from 'rxjs';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -11,7 +10,7 @@ import { HeroesService } from '../../services/heroes.service';
 })
 export class HeroesSearchComponent implements OnInit{
 
-  @Input() public query: string = '';
+  @Input() query: string = '';
   public page: number = 1;
 
   public searchForm = this.formBuilder.nonNullable.group({
@@ -24,10 +23,17 @@ export class HeroesSearchComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.setSearchValue();
+    this.filterHeroes();
+  }
+
+  setSearchValue(){
     this.searchForm.patchValue({
       query: this.query
     })
+  }
 
+  filterHeroes(){
     this.searchForm.valueChanges.pipe(
       debounceTime(400),
       switchMap(query => 
@@ -36,6 +42,8 @@ export class HeroesSearchComponent implements OnInit{
     ).subscribe(heroes => {
       this.setUrl()
       this.heroService.heroes.emit(heroes)
+      this.heroService.query.emit(this.searchForm.get('query')?.value)
+      this.heroService.page.emit(1)
     })
   }
 
@@ -45,7 +53,6 @@ export class HeroesSearchComponent implements OnInit{
       window.history.pushState({path:newurl},'',newurl);
     }
   }
-  
   
   clearFilterHeroes(){
     this.searchForm.patchValue({
