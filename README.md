@@ -12,4 +12,4 @@ Data was fetched from `https://akabab.github.io/superhero-api/api/` using postma
 
 ### WARNING
 
-If application give you errors try to deactivate `Angular Language Service` doesn't work with the version of typescript angular 15 needs
+If application give you errors try to deactivate `Angular Language Service` doesn't work with the version of typescript angular 15 requirements
