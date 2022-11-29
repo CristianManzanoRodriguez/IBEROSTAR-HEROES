@@ -1,0 +1,23 @@
+.hero-pagination-wrapper{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2.5rem;
+    position: sticky;
+    bottom: 0;
+    margin-bottom: 3.125rem;
+}
+
+.pagination-text-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+p{
+    white-space: nowrap;
+    padding-inline: 5px;
+    margin-bottom: 0px;
+}
+
+button{
+    width: 9.375rem;
+}

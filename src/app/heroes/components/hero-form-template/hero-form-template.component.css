@@ -1,0 +1,56 @@
+input[type="text"], input[type="number"], select{
+    width: 100%;
+    box-sizing: border-box;
+    height: 36px;
+    border-radius: 9px;
+    border: none;
+    font-size: 1em;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: .5rem;
+}
+
+.hero-name-input-uppercase{
+    text-transform: uppercase;
+}
+
+fieldset{
+    border: none;
+    padding: 0px;
+    margin-top: .5rem;
+}
+
+.powerstats-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+h4{
+    margin-bottom: 0px;
+}
+
+label{
+    color: #ff4081;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: .5rem;
+}
+
+.affiliation-fieldset{
+    display: flex;
+    flex-direction: column;
+}
+
+textarea{
+    resize: none;
+}
+
+.edit-hero-button{
+    margin-top: 1rem;
+    width: 100%;
+}
+
+small{
+    color: orange;
+}
